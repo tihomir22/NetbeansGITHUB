@@ -70,4 +70,21 @@ public class Agenda {
         }
     
     }
+    public Pagina buscarPagina(int dia,int mes){
+        Pagina busqueda=null ,temp;
+        int cont=0;
+        boolean encontrado=false;
+        
+        while(cont < paginas.length && encontrado== false){
+            temp=paginas[cont++];
+            if(temp.getDia()==dia && temp.getMes()==mes){
+                busqueda=temp;
+                encontrado=true;
+            
+            }
+        
+        }
+        return busqueda;
+    }
+    
 }
