@@ -44,6 +44,8 @@ public class Pagina {
         this.dia = dia;
         this.mes = mes;
     }
+    Pagina(){
+    }
     public void añadirCita(Cita c){
         this.citas.add(c);
     }

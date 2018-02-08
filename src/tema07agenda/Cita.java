@@ -54,6 +54,8 @@ public class Cita {
         this.titulo = titulo;
         this.texto = texto;
     }
+    Cita(){
+    }
     public String leerCita(){
         StringBuilder st=new StringBuilder();
         st.append("").append(this.getHora()).append(":").append(this.getMinutos()).append("-");
