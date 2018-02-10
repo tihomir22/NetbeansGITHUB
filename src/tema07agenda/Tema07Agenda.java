@@ -38,29 +38,38 @@ public class Tema07Agenda {
             opcion = teclado.nextInt();
             switch (opcion) {
                 case 1:
-                    //Añadir los metodos para validar que el dia y el mes son correctos
+                    //Añadir los metodos para validar que el dia y el mes son correctos AÑADIDOS
                     System.out.println("Introduce dia");
                     dia = teclado.nextInt();
                     System.out.println("Introduce mes");
                     mes = teclado.nextInt();
-                    agenda1.abierta = agenda1.buscarPagina(dia, mes);
-                    System.out.println("Pagina seleccionada : " + agenda1.abierta.getDia() + " " + agenda1.abierta.getMes());
+                    if (agenda1.comprobarMesDia(dia, mes)) {
+                        agenda1.abierta = agenda1.buscarPagina(dia, mes);
+                        System.out.println("Pagina seleccionada : " + agenda1.abierta.getDia() + " " + agenda1.abierta.getMes());
+                    } else {
+                        System.out.println("El dia y el mes son incorrectos");
+                    }
                     break;
                 case 2:
-                    //Falta añadir metodos de validacion de hora y minuts
-                    System.out.println("Introduce hora");
-                    hora = teclado.nextInt();
-                    System.out.println("Introduce minutos");
-                    minutos = teclado.nextInt();
-                    System.out.println("Introduce titulo");
-                    teclado.nextLine();
-                    titulo = teclado.nextLine();
-                    System.out.println("Introduce texto");
-                    texto = teclado.nextLine();
-                    //Comprobar si existe ya una cita a esa hora
-                    cita1 = new Cita(hora, minutos, titulo, texto);
-                    agenda1.abierta.añadirCita(cita1);
-                    agenda1.abierta.leerPagina();
+                    //Falta añadir metodos de validacion de hora y minuts AÑADIDOS
+                    do {
+                        System.out.println("Introduce hora");
+                        hora = teclado.nextInt();
+                        System.out.println("Introduce minutos");
+                        minutos = teclado.nextInt();
+                        System.out.println("Introduce titulo");
+                        teclado.nextLine();
+                        titulo = teclado.nextLine();
+                        System.out.println("Introduce texto");
+                        texto = teclado.nextLine();
+                    } while (agenda1.comprobarHoraMinutos(hora, minutos) == false);
+                    //Comprobar si existe ya una cita a esa hora AÑADIDOS
+                    if (agenda1.hayCita(hora, minutos) == false) {
+                        cita1 = new Cita(hora, minutos, titulo, texto);
+                        agenda1.abierta.añadirCita(cita1);
+                        agenda1.abierta.leerPagina();
+                        System.out.println("Cita añadida satisfactoriamente");
+                    }
                     break;
             }
         } while (opcion != 0);
